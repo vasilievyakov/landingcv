@@ -592,11 +592,42 @@
             color: var(--text-muted);
             text-decoration: none;
             border-bottom: 1px dashed var(--border-dark);
+            cursor: pointer;
+            position: relative;
         }
 
         .testimonial-proof:hover {
             color: var(--accent);
             border-color: var(--accent);
+        }
+
+        .testimonial-proof img {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: 400px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            z-index: 100;
+            background: var(--bg);
+        }
+
+        .testimonial-proof:hover img {
+            display: block;
+        }
+
+        /* Case images hover */
+        .case-images-col img {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .case-images-col img:hover {
+            transform: scale(2.5);
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         /* Footer */
@@ -852,7 +883,7 @@
                 <div class="case-card">
                     <div class="case-header">
                         <span class="case-number">1. AI-аналитика клиентского опыта</span>
-                        <span class="case-industry">Косметика / Retail</span>
+                        <span class="case-industry"></span>
                     </div>
                     <div class="case-body">
                         <div class="case-info">
@@ -870,7 +901,7 @@
                 <div class="case-card">
                     <div class="case-header">
                         <span class="case-number">2. Автоматизация мониторинга рынка</span>
-                        <span class="case-industry">Fashion / Retail</span>
+                        <span class="case-industry"></span>
                     </div>
                     <div class="case-body">
                         <div class="case-info">
@@ -888,7 +919,7 @@
                 <div class="case-card">
                     <div class="case-header">
                         <span class="case-number">3. Фреймворк AI-разработки</span>
-                        <span class="case-industry">Агентства / Продуктовые команды</span>
+                        <span class="case-industry"></span>
                     </div>
                     <div class="case-body">
                         <div class="case-info">
@@ -906,7 +937,7 @@
                 <div class="case-card">
                     <div class="case-header">
                         <span class="case-number">4. Обучающие материалы по AI</span>
-                        <span class="case-industry">Корпоративное обучение</span>
+                        <span class="case-industry"></span>
                     </div>
                     <div class="case-body">
                         <div class="case-info">
@@ -958,13 +989,13 @@
                     <div class="testimonial-text">
                         «Про ноутбук LM забыла упомянуть, потому что это вообще незаменимая история для меня. И хотела ещё сказать, что в освоении всей этой темы мне очень помогает ваше сообщество, за что большое спасибо. И, например, вот такие встречи, как была по вайб-кодингу с Яковом, потому что я вижу, как это применяется, я вижу подходы, я вижу не только инструменты, которые он использует, но и там какие-то приёмчики. И эти приёмчики тоже помогают. <mark>У тебя не просто голый инструмент, а ты уже примерно понимаешь, с какой задачей как работать.</mark> И вот эти приёмы — это тоже очень интересная история, и хотелось бы такого побольше.»
                     </div>
-                    <a href="review-1.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                    <a href="review-1.png" target="_blank" class="testimonial-proof">Скриншот →<img src="review-1.png" alt="Скриншот отзыва"></a>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
                         «Придумать себе юзкейс. Если бы у меня был юзкейс, я бы уже сама научилась, я думаю. Возможно, единственное, что было бы интересно автоматизировать и сильно облегчило бы мне жизнь — <mark>автоматический мониторинг конкурентов, то, что Яков показывал</mark>»
                     </div>
-                    <a href="review-2.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                    <a href="review-2.png" target="_blank" class="testimonial-proof">Скриншот →<img src="review-2.png" alt="Скриншот отзыва"></a>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-voice">
@@ -979,13 +1010,13 @@
                     <div class="testimonial-text">
                         «Яков, привет. Прости, пожалуйста, просто у меня с малышом тут такие дни. Месяц назад я родила, почти месяц, во вторник будет. Сейчас такая активность начинается, я всё время забываю, короче. Я тебе могу дать в целом хороший фидбэк. <mark>Мне всё очень понравилось, мне было всё очень понятно, очень комфортно</mark> и вообще никаких вопросов нету то есть»
                     </div>
-                    <a href="review-3.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                    <a href="review-3.png" target="_blank" class="testimonial-proof">Скриншот →<img src="review-3.png" alt="Скриншот отзыва"></a>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-text">
                         «Подумать. Ну, короче. <mark>Мне было очень комфортно.</mark> И спасибо тебе большое. Я считаю, что это отличное знакомство было. <mark>Ну и работа вообще классная.</mark> Я.»
                     </div>
-                    <a href="review-4.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                    <a href="review-4.png" target="_blank" class="testimonial-proof">Скриншот →<img src="review-4.png" alt="Скриншот отзыва"></a>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-voice">
@@ -1000,7 +1031,7 @@
                     <div class="testimonial-text">
                         «Яков, да, спасибо большое. <mark>Встреча очень хорошая получилась</mark> и, как мне показалось, прям стопроцентное попадание. Сейчас тогда основной этап мы, вот Женя, который HR-директор, он сейчас будет показывать эти две концепции нашим двум основным директорам компании. И у меня сейчас два вопросика тогда к тебе. Если, допустим, мы утверждаем какую-то из концепций, то какой дальнейший план? Ты, я так понимаю, ещё вроде как tone of voice нам поможешь с этим? <...> И второй моментик, хотела тебя попросить такую мини-свою визиточку. Мне тут же позвонила после встречи Юля, которая начальник маркетинга. Они тоже хотят со своей стороны с маркетингом обратиться к тебе с такой же какой-то историей стратегической.»
                     </div>
-                    <a href="review-5.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                    <a href="review-5.png" target="_blank" class="testimonial-proof">Скриншот →<img src="review-5.png" alt="Скриншот отзыва"></a>
                 </div>
             </div>
         </div>
