@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яков Васильев — AI-стратег и консультант</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-muted: #fafafa;
+            --border: #e5e5e5;
+            --border-dark: #d4d4d4;
+            --text: #171717;
+            --text-muted: #737373;
+            --accent: #c9a227;
+            --accent-bg: #fef9e7;
+            --mono: 'JetBrains Mono', 'Consolas', monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: white;
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-title {
+            font-family: var(--mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .header-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 0.85rem;
+        }
+
+        .header-right a {
+            color: var(--text-muted);
+        }
+
+        .header-role {
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-family: var(--mono);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 500;
+            line-height: 1.4;
+            max-width: 700px;
+            margin-bottom: 24px;
+        }
+
+        .hero-text {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            padding: 12px 24px;
+            border: 1px solid var(--border-dark);
+            background: var(--bg);
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
+        }
+
+        /* Section */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-note {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+        }
+
+        .about-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .about-content p {
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        /* Clients */
+        .clients-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .client-tag {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            background: var(--bg-muted);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        /* Tools */
+        .tools-intro {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tool-tag {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            background: var(--bg);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        /* Formats */
+        .formats-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .format-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .format-left {
+            padding: 24px;
+            border-right: 1px solid var(--border);
+        }
+
+        .format-right {
+            padding: 24px;
+            background: var(--bg-muted);
+        }
+
+        .format-number {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .format-title {
+            font-family: var(--mono);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .format-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .format-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .format-result {
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .format-price {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Cases */
+        .cases-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .case-card {
+            border: 1px solid var(--border);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-muted);
+        }
+
+        .case-number {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .case-industry {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .case-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .case-info {
+            padding: 24px;
+            border-right: 1px solid var(--border);
+        }
+
+        .case-images-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .case-images-col img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            object-position: top left;
+            border-left: 1px solid var(--border);
+        }
+
+        .case-images-col img:first-child {
+            border-left: none;
+        }
+
+        .case-label {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .case-title {
+            font-family: var(--mono);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .case-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Video */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border: 1px solid var(--border);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Philosophy */
+        .philosophy-box {
+            border: 1px solid var(--border);
+            padding: 40px;
+            background: var(--bg-muted);
+        }
+
+        .philosophy-box h3 {
+            font-family: var(--mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .philosophy-box p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            max-width: 600px;
+        }
+
+        .philosophy-highlight {
+            font-family: var(--mono);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Process */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .process-step-badge {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+        }
+
+        .process-arrow {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .process-details {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .process-detail {
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .process-detail-num {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .process-detail-title {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .process-detail-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .payment-note {
+            margin-top: 32px;
+            padding: 16px 20px;
+            background: var(--bg-muted);
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-text {
+            color: var(--text-muted);
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-link {
+            font-family: var(--mono);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-link-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            width: 60px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .testimonial-card {
+            border: 1px solid var(--border);
+            padding: 24px;
+            background: var(--bg);
+        }
+
+        .testimonial-card:nth-child(5) {
+            grid-column: 1 / -1;
+        }
+
+        .testimonial-voice {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: var(--bg-muted);
+            border-radius: 20px;
+            width: fit-content;
+        }
+
+        .voice-icon {
+            width: 32px;
+            height: 32px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .voice-wave {
+            width: 120px;
+            height: 24px;
+            background: linear-gradient(90deg, 
+                var(--border-dark) 2px, transparent 2px,
+                transparent 4px, var(--border-dark) 4px,
+                var(--border-dark) 6px, transparent 6px,
+                transparent 8px, var(--border-dark) 8px
+            );
+            background-size: 10px 100%;
+            opacity: 0.5;
+        }
+
+        .voice-duration {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .testimonial-text mark {
+            background: var(--accent-bg);
+            color: var(--text);
+            padding: 2px 4px;
+        }
+
+        .testimonial-proof {
+            display: inline-block;
+            margin-top: 16px;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--border-dark);
+        }
+
+        .testimonial-proof:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: var(--mono);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .header-right {
+                text-align: left;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .format-card {
+                grid-template-columns: 1fr;
+            }
+
+            .format-left {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .case-body {
+                grid-template-columns: 1fr;
+            }
+
+            .case-info {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .case-images-col {
+                grid-template-columns: 1fr;
+            }
+
+            .case-images-col img {
+                border-left: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .case-images-col img:first-child {
+                border-top: none;
+            }
+
+            .process-details {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <div>
+                    <div class="header-title">Яков Васильев</div>
+                    <div class="header-subtitle">AI-стратег и консультант</div>
+                </div>
+                <div class="header-right">
+                    <div class="header-role">Strategy Director | AI and Communication Expert</div>
+                    <a href="mailto:vasilievgpt@gmail.com">vasilievgpt@gmail.com</a> · <a href="https://t.me/yakovvasiliev">t.me/yakovvasiliev</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Мир ускоряется быстрее, чем мы успеваем понимать. Я помогаю осмыслять происходящее и знакомлю с инструментами на грани технологий.</h1>
+            <p class="hero-text">Работаю с руководителями и командами, чтобы технология, стратегия и мышление говорили на одном языке.</p>
+            <a href="#contact" class="btn">Обсудить задачу →</a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Обо мне</span>
+                <span class="section-note">15+ лет в стратегии<br>3 года в AI</span>
+            </div>
+            <div class="about-grid">
+                <div class="about-label">Опыт</div>
+                <div class="about-content">
+                    <p>Более пятнадцати лет я работаю на стыке стратегии, культуры и технологий. Помогаю брендам и командам выстраивать смысловую структуру бизнеса, где решения рождаются из понимания, а не из шума.</p>
+                    <p>Мой интерес — как мышление превращается в систему действий, и как эта система становится устойчивой частью бизнеса.</p>
+                    <p>Работал на директорских позициях в агентствах Havas, Louder, Leo Burnett.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="clients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Клиенты</span>
+            </div>
+            <div class="clients-row">
+                <span class="client-tag">Porsche</span>
+                <span class="client-tag">adidas</span>
+                <span class="client-tag">Heineken</span>
+                <span class="client-tag">Bacardi</span>
+                <span class="client-tag">Diageo</span>
+                <span class="client-tag">Audi</span>
+                <span class="client-tag">Coca-Cola</span>
+                <span class="client-tag">Mars</span>
+                <span class="client-tag">McDonald's</span>
+                <span class="client-tag">Philips</span>
+                <span class="client-tag">BASF</span>
+                <span class="client-tag">Sber</span>
+                <span class="client-tag">Novartis</span>
+                <span class="client-tag">Ferrero</span>
+                <span class="client-tag">Invitro</span>
+                <span class="client-tag">TEVA</span>
+                <span class="client-tag">Beeline</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="tools">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Инструменты</span>
+                <span class="section-note">Не только ChatGPT</span>
+            </div>
+            <p class="tools-intro">Помимо ChatGPT, познакомимся с огромным количеством полезного софта на грани технологий:</p>
+            <div class="tools-row">
+                <span class="tool-tag">Gemini</span>
+                <span class="tool-tag">Claude</span>
+                <span class="tool-tag">Cursor</span>
+                <span class="tool-tag">Kiro</span>
+                <span class="tool-tag">NotebookLM</span>
+                <span class="tool-tag">Google Apps Script</span>
+                <span class="tool-tag">Parallel AI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formats -->
+    <section class="formats">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Форматы работы</span>
+                <span class="section-note">6 форматов</span>
+            </div>
+            <div class="formats-grid">
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">01</div>
+                        <div class="format-title">AI-интенсивы для команд</div>
+                        <div class="format-description">Три сессии по 2,5 часа. Работаем на ваших задачах. Разбираем процессы, создаём шаблоны и инструменты.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Команда начинает использовать AI системно и осознанно, с ростом скорости и качества.</div>
+                        <div class="format-price">от €3500 / команда до 10 чел.</div>
+                    </div>
+                </div>
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">02</div>
+                        <div class="format-title">Стратегическая платформа</div>
+                        <div class="format-description">Определяем позиционирование, структуру бренда, tone of voice и коммуникационную рамку.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Чёткий смысл, понятная логика и визуально-вербальная целостность бренда.</div>
+                        <div class="format-price">от €3000</div>
+                    </div>
+                </div>
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">03</div>
+                        <div class="format-title">AI-системы под задачу</div>
+                        <div class="format-description">Проектирование и внедрение решений: боты, RAG-системы, генераторы, дашборды.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Рабочие инструменты, которые действительно экономят время и снижают рутину.</div>
+                        <div class="format-price">от €4000</div>
+                    </div>
+                </div>
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">04</div>
+                        <div class="format-title">Индивидуальные консультации</div>
+                        <div class="format-description">Персональные стратегические сессии онлайн или офлайн. Минимум 2 часа, рекомендую 5+.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Структурируем задачу, находим противоречия, выстраиваем направление.</div>
+                        <div class="format-price">€250 / час</div>
+                    </div>
+                </div>
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">05</div>
+                        <div class="format-title">Программа внедрения</div>
+                        <div class="format-description">Два месяца плотной совместной работы. Еженедельные встречи, пошаговое внедрение инструментов.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Рабочая AI-система под ваш контекст и обученная команда.</div>
+                        <div class="format-price">€12000 / 2 мес.</div>
+                    </div>
+                </div>
+                <div class="format-card">
+                    <div class="format-left">
+                        <div class="format-number">06</div>
+                        <div class="format-title">Осмысление бизнеса для C-level</div>
+                        <div class="format-description">Серия воркшопов через феноменологию, диалектику и герменевтику управленческих решений.</div>
+                    </div>
+                    <div class="format-right">
+                        <div class="format-label">Результат</div>
+                        <div class="format-result">Руководители переосмысливают бизнес как живую систему.</div>
+                        <div class="format-price">€6000 / модуль</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cases -->
+    <section class="cases">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Примеры работ</span>
+                <span class="section-note">Проекты на стыке стратегии, аналитики и AI</span>
+            </div>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-number">1. AI-аналитика клиентского опыта</span>
+                        <span class="case-industry">Косметика / Retail</span>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-info">
+                            <div class="case-label">Задача</div>
+                            <div class="case-description" style="margin-bottom: 16px;">Автоматизировать анализ NPS и превратить данные в actionable-рекомендации для маркетинга.</div>
+                            <div class="case-label">Решение</div>
+                            <div class="case-description">Дашборд с сегментацией по возрастам, автоматическими инсайтами и рекомендациями по коммуникации для каждого сегмента.</div>
+                        </div>
+                        <div class="case-images-col">
+                            <img src="case-2a.png" alt="NPS Dashboard">
+                            <img src="case-2b.png" alt="Recommendations">
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-number">2. Автоматизация мониторинга рынка</span>
+                        <span class="case-industry">Fashion / Retail</span>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-info">
+                            <div class="case-label">Задача</div>
+                            <div class="case-description" style="margin-bottom: 16px;">Отслеживать AI-внедрения конкурентов и собирать инфоповоды по отрасли.</div>
+                            <div class="case-label">Решение</div>
+                            <div class="case-description">Система скрининга компаний по критериям + парсинг инфоповодов с автоматической категоризацией через Apps Script и Octoparse.</div>
+                        </div>
+                        <div class="case-images-col">
+                            <img src="case-1a.png" alt="Apps Script">
+                            <img src="case-1b.png" alt="FindAll">
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-number">3. Фреймворк AI-разработки</span>
+                        <span class="case-industry">Агентства / Продуктовые команды</span>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-info">
+                            <div class="case-label">Задача</div>
+                            <div class="case-description" style="margin-bottom: 16px;">Создать повторяемый процесс разработки AI-продуктов для команды без технического бэкграунда.</div>
+                            <div class="case-label">Решение</div>
+                            <div class="case-description">Методология от идеи до деплоя: роли, инструменты, промпты на каждом этапе. Spec-Driven подход к управлению проектами.</div>
+                        </div>
+                        <div class="case-images-col">
+                            <img src="case-4a.png" alt="Framework">
+                            <img src="case-4b.png" alt="Comparison">
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-number">4. Обучающие материалы по AI</span>
+                        <span class="case-industry">Корпоративное обучение</span>
+                    </div>
+                    <div class="case-body">
+                        <div class="case-info">
+                            <div class="case-label">Задача</div>
+                            <div class="case-description" style="margin-bottom: 16px;">Объяснить сложные концепции LLM и AI-инструментов нетехническим руководителям.</div>
+                            <div class="case-label">Решение</div>
+                            <div class="case-description">Визуальные схемы архитектуры LLM, методологические учебники, материалы для воркшопов с фокусом на практику.</div>
+                        </div>
+                        <div class="case-images-col">
+                            <img src="case-3a.png" alt="LLM Schema">
+                            <img src="case-3b.png" alt="SDM">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video -->
+    <section class="video">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Как я объясняю</span>
+                <span class="section-note">Видео-разбор</span>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/ovSMJSi-ieM" title="Яков Васильев — видео" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Отзывы</span>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-voice">
+                        <div class="voice-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5,3 19,12 5,21"/>
+                            </svg>
+                        </div>
+                        <div class="voice-wave"></div>
+                        <span class="voice-duration">00:44</span>
+                    </div>
+                    <div class="testimonial-text">
+                        «Про ноутбук LM забыла упомянуть, потому что это вообще незаменимая история для меня. И хотела ещё сказать, что в освоении всей этой темы мне очень помогает ваше сообщество, за что большое спасибо. И, например, вот такие встречи, как была по вайб-кодингу с Яковом, потому что я вижу, как это применяется, я вижу подходы, я вижу не только инструменты, которые он использует, но и там какие-то приёмчики. И эти приёмчики тоже помогают. <mark>У тебя не просто голый инструмент, а ты уже примерно понимаешь, с какой задачей как работать.</mark> И вот эти приёмы — это тоже очень интересная история, и хотелось бы такого побольше.»
+                    </div>
+                    <a href="review-1.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        «Придумать себе юзкейс. Если бы у меня был юзкейс, я бы уже сама научилась, я думаю. Возможно, единственное, что было бы интересно автоматизировать и сильно облегчило бы мне жизнь — <mark>автоматический мониторинг конкурентов, то, что Яков показывал</mark>»
+                    </div>
+                    <a href="review-2.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-voice">
+                        <div class="voice-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5,3 19,12 5,21"/>
+                            </svg>
+                        </div>
+                        <div class="voice-wave"></div>
+                        <span class="voice-duration">01:55</span>
+                    </div>
+                    <div class="testimonial-text">
+                        «Яков, привет. Прости, пожалуйста, просто у меня с малышом тут такие дни. Месяц назад я родила, почти месяц, во вторник будет. Сейчас такая активность начинается, я всё время забываю, короче. Я тебе могу дать в целом хороший фидбэк. <mark>Мне всё очень понравилось, мне было всё очень понятно, очень комфортно</mark> и вообще никаких вопросов нету то есть»
+                    </div>
+                    <a href="review-3.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        «Подумать. Ну, короче. <mark>Мне было очень комфортно.</mark> И спасибо тебе большое. Я считаю, что это отличное знакомство было. <mark>Ну и работа вообще классная.</mark> Я.»
+                    </div>
+                    <a href="review-4.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-voice">
+                        <div class="voice-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon points="5,3 19,12 5,21"/>
+                            </svg>
+                        </div>
+                        <div class="voice-wave"></div>
+                        <span class="voice-duration">01:31</span>
+                    </div>
+                    <div class="testimonial-text">
+                        «Яков, да, спасибо большое. <mark>Встреча очень хорошая получилась</mark> и, как мне показалось, прям стопроцентное попадание. Сейчас тогда основной этап мы, вот Женя, который HR-директор, он сейчас будет показывать эти две концепции нашим двум основным директорам компании. И у меня сейчас два вопросика тогда к тебе. Если, допустим, мы утверждаем какую-то из концепций, то какой дальнейший план? Ты, я так понимаю, ещё вроде как tone of voice нам поможешь с этим? <...> И второй моментик, хотела тебя попросить такую мини-свою визиточку. Мне тут же позвонила после встречи Юля, которая начальник маркетинга. Они тоже хотят со своей стороны с маркетингом обратиться к тебе с такой же какой-то историей стратегической.»
+                    </div>
+                    <a href="review-5.png" target="_blank" class="testimonial-proof">Скриншот →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Как всё устроено</span>
+            </div>
+            <div class="process-flow">
+                <span class="process-step-badge">1. Знакомство</span>
+                <span class="process-arrow">→</span>
+                <span class="process-step-badge">2. Формат</span>
+                <span class="process-arrow">→</span>
+                <span class="process-step-badge">3. Согласование</span>
+                <span class="process-arrow">→</span>
+                <span class="process-step-badge">4. Предоплата 50%</span>
+                <span class="process-arrow">→</span>
+                <span class="process-step-badge">5. Работа</span>
+                <span class="process-arrow">→</span>
+                <span class="process-step-badge">6. Результат</span>
+            </div>
+            <div class="payment-note">
+                Оплата возможна: криптовалютой, рублями (ИП РФ) или через сербский бизнес-счёт.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-title">Контакты</span>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-text">
+                    <p>Если вы чувствуете, что в вашей компании назрело время подумать о смысле и структуре — смело напишите.</p>
+                    <p style="margin-top: 12px;">Работаю с удовольствием с теми, кому действительно интересно разобраться, как всё устроено.</p>
+                </div>
+                <div class="contact-links">
+                    <div class="contact-link">
+                        <span class="contact-link-label">Email</span>
+                        <a href="mailto:vasilievgpt@gmail.com">vasilievgpt@gmail.com</a>
+                    </div>
+                    <div class="contact-link">
+                        <span class="contact-link-label">Telegram</span>
+                        <a href="https://t.me/yakovvasiliev">@yakovvasiliev</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            © 2025 Яков Васильев
+        </div>
+    </footer>
+</body>
+</html>
